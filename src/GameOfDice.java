@@ -75,7 +75,9 @@ public class GameOfDice {
 
         int dice1 = 0;
         int dice2 = 0;
-        String rollAgain = "y";
+        //String rollAgain = "y";
+        boolean rollAgain = true;
+
         int totalScore = 0;
         int roundScore = 0;
         Scanner kb = new Scanner(System.in);
@@ -94,7 +96,7 @@ public class GameOfDice {
 
         System.out.println("Welcome! Let's play dice.\nRace to 100!\nSnake eyes = 25pts\nRolls with a one = 0pts\n");
 
-        while (rollAgain.equals("y")) {
+        while (rollAgain == true) {
             rounds++;
             randomIndex = randomizer.nextInt(6);
             rollDie = diceArray.get(randomIndex);
@@ -111,7 +113,7 @@ public class GameOfDice {
                 totalScore += roundScore;
                 System.out.println("Round Score: " + roundScore + " (nice!)"+"\nTotal Score: "+totalScore);
                 if (totalScore >= 100){
-                    rollAgain = "n";
+                    rollAgain = false;
                 }
 
             }
@@ -120,7 +122,7 @@ public class GameOfDice {
                 totalScore += roundScore;
                 System.out.println("Round Score: " + roundScore + " (too bad!)"+"\nTotal Score: "+totalScore);
                 if (totalScore >= 100){
-                    rollAgain = "n";
+                    rollAgain = false;
                 }
             }
             else {
@@ -128,20 +130,20 @@ public class GameOfDice {
                 totalScore += roundScore;
                 System.out.println("Round Score: " + roundScore+"\nTotal Score: "+totalScore);
                 if (totalScore >= 100){
-                    rollAgain = "n";
+                    rollAgain = false;
                 }
             }
 
 
             if(totalScore >=100){
                 System.out.println("You won in "+rounds+" rounds!");
-                rollAgain = "n";
+                rollAgain = false;
             }
             else {
                 System.out.println("Roll again? y/n\n");
                 String answer = kb.nextLine();
                 if (answer.equals("n") || answer.equals("N") || answer.equals("NO") || answer.equals("No")) {
-                    rollAgain = "n";
+                    rollAgain = false;
                 }
             }
 
